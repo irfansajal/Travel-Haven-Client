@@ -5,6 +5,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { useContext, useRef } from 'react'
 import { AuthContext } from '../../providers/AuthProvider'
 import { TbFidgetSpinner } from 'react-icons/tb'
+import { saveUser } from '../../api/auth'
 
 
 
@@ -45,6 +46,8 @@ const SignUp = () => {
                     updateUserProfile(name,imageUrl)
                     .then(() => {
                        toast.success('Successfully signedUp')
+                       //sending it to database
+                       saveUser(result.user)
                         navigate(from, { replace: true })
                     })
                     .catch(err => {
@@ -77,6 +80,8 @@ const SignUp = () => {
         signInWithGoogle()
             .then(result => {
                 console.log(result.user)
+                //sending user infos to databse
+                saveUser(user.result)
                 navigate(from, { replace: true })
             })
             .catch(err => {
@@ -90,7 +95,7 @@ const SignUp = () => {
             <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
                 <div className='mb-8 text-center'>
                     <h1 className='my-3 text-4xl font-bold'>Sign Up</h1>
-                    <p className='text-sm text-gray-400'>Welcome to AirCNC</p>
+                    <p className='text-sm text-gray-400'>Welcome to Travel Haven</p>
                 </div>
                 <form onSubmit={handleSubmit}
                     noValidate=''
