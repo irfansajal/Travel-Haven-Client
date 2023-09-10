@@ -6,6 +6,7 @@ import Loader from '../Shared/Loader';
 import Card from './Card';
 import Lottie from 'lottie-react'
 import cat from '../../../public/animation_lm9cvp97.json'
+import { getAllRooms } from '../../api/rooms';
 
 
 const Rooms = () => {
@@ -16,10 +17,11 @@ const Rooms = () => {
     const [rooms, setRooms] = useState([])
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-        /* setLoading(true) modified as it makes really shaky when website is rendering */
+      
 
-        fetch('./Rooms.json')
-            .then(res => res.json())
+       /*  fetch('./Rooms.json')
+            .then(res => res.json()) */
+            getAllRooms()
             .then(data => {
                 if (category) {
                     const filtered = data.filter(room => room.category === category)
