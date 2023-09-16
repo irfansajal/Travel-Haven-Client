@@ -2,12 +2,13 @@ import { AiOutlineMenu } from 'react-icons/ai'
 import Avatar from './Avatar'
 import { useCallback, useContext, useState } from 'react'
 import { AuthContext } from '../../../providers/AuthProvider'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import HostRequestModal from '../../Modal/HostRequestModal'
 import { becomeHost } from '../../../api/auth'
 import { toast } from 'react-hot-toast'
 
 const MenuDropdown = () => {
+  const navigate = useNavigate()
   const { user, logOut, role, setRole } = useContext(AuthContext)
   const [isOpen, setIsOpen] = useState(false)
   const [modal, setModal] = useState(false)
@@ -23,6 +24,7 @@ const MenuDropdown = () => {
         console.log(data)
         toast.success('You are Host now! post Rooms')
         setRole('host')
+        navigate('/dashboard/add-room')
         closeModal()
       })
       .then(err => console.log(err.message))
@@ -34,7 +36,8 @@ const MenuDropdown = () => {
     <div className='relative'>
       <div className='flex flex-row items-center gap-3'>
         <div className='hidden md:block text-sm font-semibold py-3 px-8 rounded-full hover:bg-neutral-100 transition cursor-pointer'>
-          {!role && <button onClick={() => setModal(true)} className='cursor-pointer' disabled={!user}> Travel Haven your home</button>}
+          {!role && <button onClick={() => setModal(true)} className='cursor-pointer' disabled={!user}> Travel Haven your home
+          </button>}
         </div>
         <div
           onClick={() => { setIsOpen(!isOpen) }}
@@ -47,7 +50,7 @@ const MenuDropdown = () => {
         </div>
       </div>
       {isOpen && (
-        <div className='absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm'>
+        <div className='absolute rounded-xl shadow-md w-[30vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm'>
           <div className='flex flex-col cursor-pointer'>
             <Link
               to='/'

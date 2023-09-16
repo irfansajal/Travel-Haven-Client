@@ -7,7 +7,7 @@ const Avatar = () => {
 
     return (
         <div>
-           <img src={user && user.photoURL ? user.photoURL : avatar} alt=""  height='30' width='30' className='rounded-full'/> 
+           <img src={user && user.photoURL ? user.photoURL : avatar} alt=""  height='30' width='30' className='rounded-full' referrerPolicy='no-referrer'/> 
         </div>
     );
 };

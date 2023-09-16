@@ -8,12 +8,12 @@ const Main = () => {
       <div>
         <Navbar></Navbar>
       </div>
-      <div className="pt-28 pb-20">
+      <div className="pt-24 min-h-[calc(100vh-68px)]">
         <Outlet></Outlet>
       </div>
       <div>
         {/* added it extra might neeed to be corrected */}
-        <Footer className="min-h-[calc(100vh-148px)]"></Footer>
+        <Footer></Footer>
       </div>
     </>
   )
