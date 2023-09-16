@@ -29,7 +29,7 @@ export const getRoom = async (id) => {
 
 }
 //get filtered rooms  for hosts
-export const getRooms = async (email) => {
+/* export const getRooms = async (email) => {
     const response = await fetch(`${import.meta.env.VITE_API_URL}/rooms/${email}`,{
         headers:{
             authorization:`Bearer ${localStorage.getItem('access-token')}`
@@ -39,7 +39,7 @@ export const getRooms = async (email) => {
     return data
 
 }
-
+ */
 //Delete a Room
 export const deleteRoom = async id => {
     const response = await fetch(`${import.meta.env.VITE_API_URL}/rooms/${id}`, {
